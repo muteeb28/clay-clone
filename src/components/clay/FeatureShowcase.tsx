@@ -54,16 +54,14 @@ const ACCENT_STYLES: Record<FeatureAccent, AccentStyle> = {
  */
 function useRevealOnScroll<T extends HTMLElement>() {
   const ref = useRef<T | null>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(
+    () => typeof IntersectionObserver === "undefined"
+  );
 
   useEffect(() => {
+    if (isVisible) return;
     const node = ref.current;
     if (!node) return;
-
-    if (typeof IntersectionObserver === "undefined") {
-      setIsVisible(true);
-      return;
-    }
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -79,7 +77,7 @@ function useRevealOnScroll<T extends HTMLElement>() {
 
     observer.observe(node);
     return () => observer.disconnect();
-  }, []);
+  }, [isVisible]);
 
   return { ref, isVisible };
 }
