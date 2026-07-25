@@ -24,6 +24,7 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("http://localhost:3000"),
   title: "Clay | Build systems to grow revenue",
   description:
     "Infrastructure to get any data, run agentic workflows, and launch GTM plays.",

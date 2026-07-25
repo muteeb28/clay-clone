@@ -108,7 +108,7 @@ function PhotoCard({ card }: { card: ResourceGridCard }) {
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
       <div className="relative z-10 p-6">
         {card.eyebrow && (
-          <span className="text-[11px] font-semibold tracking-widest text-white/80 uppercase">
+          <span className="block text-[11px] font-semibold tracking-widest text-white/80 uppercase">
             {card.eyebrow}
           </span>
         )}

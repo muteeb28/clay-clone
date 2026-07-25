@@ -1,9 +1,27 @@
+import { Header } from "@/components/clay/Header";
+import { Hero } from "@/components/clay/Hero";
+import { SocialProofMarquee } from "@/components/clay/SocialProofMarquee";
+import { GtmBuilder } from "@/components/clay/GtmBuilder";
+import { FeatureShowcaseSection } from "@/components/clay/FeatureShowcaseSection";
+import { CaseStudies } from "@/components/clay/CaseStudies";
+import { ResourceGrid } from "@/components/clay/ResourceGrid";
+import { FinalCta } from "@/components/clay/FinalCta";
+import { Footer } from "@/components/clay/Footer";
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen items-center justify-center">
-      <p className="text-muted-foreground">
-        Clone target not yet built. Run <code className="font-mono text-foreground">/clone-website</code> to start.
-      </p>
-    </main>
+    <>
+      <Header />
+      <main>
+        <Hero />
+        <SocialProofMarquee />
+        <GtmBuilder />
+        <FeatureShowcaseSection />
+        <CaseStudies />
+        <ResourceGrid />
+        <FinalCta />
+      </main>
+      <Footer />
+    </>
   );
 }
