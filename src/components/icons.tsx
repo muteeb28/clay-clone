@@ -6,6 +6,9 @@ import {
   Play,
   Pause,
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  CalendarPlus,
   Sparkle,
 } from "lucide-react";
 import type { SVGProps } from "react";
@@ -17,6 +20,9 @@ export const CloseIcon = X;
 export const PlayIcon = Play;
 export const PauseIcon = Pause;
 export const ChevronDownIcon = ChevronDown;
+export const ChevronLeftIcon = ChevronLeft;
+export const ChevronRightIcon = ChevronRight;
+export const CalendarPlusIcon = CalendarPlus;
 export const FloatingWidgetIcon = Sparkle;
 
 export function LinkedInIcon(props: SVGProps<SVGSVGElement>) {

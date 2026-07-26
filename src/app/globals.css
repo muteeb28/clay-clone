@@ -153,3 +153,20 @@
 .animate-marquee {
   animation: marquee-scroll 40s linear infinite;
 }
+
+@keyframes marquee-up {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50%);
+  }
+}
+
+.animate-marquee-up {
+  animation: marquee-up 25s linear infinite;
+}
+
+.animate-marquee-down {
+  animation: marquee-up 25s linear infinite reverse;
+}
