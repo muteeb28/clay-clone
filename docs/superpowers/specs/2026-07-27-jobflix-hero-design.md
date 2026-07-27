@@ -29,56 +29,73 @@ JobFlix's product pillars (from the user's feature copy):
 - **Headline**: `Everything it takes to get hired. Nothing else.`
 - **Subhead**: `ATS-beating resumes, first-mover job alerts, real referrals,
   and mentors who won't let you fail.`
-- **CTA button**: `Start free trial` (unchanged — generic enough to keep)
+- **CTA buttons** (two, replacing Clay's single "Start free trial"):
+  - Primary (solid, filled): `Optimize My Resume`
+  - Secondary (outline/ghost, sits beside primary): `Find My Next Job`
 
-This replaces Clay's eyebrow/headline/subhead in `Hero.tsx`. Layout structure
-(flex arrangement of heading + CTA on one side, subhead paragraph on the
-other) stays as-is.
+  Both are first-person and action-specific rather than generic, acting as
+  two separate hooks into the product's two most concrete utilities (resume
+  optimization vs. job discovery) — the other three pillars (referrals,
+  learning, mentorship) stay as page content further down, not hero CTAs.
+
+This replaces Clay's eyebrow/headline/subhead/CTA in `Hero.tsx`.
 
 ## Visual
 
-Replace the `<video>` background with a self-contained illustration built in
-code (inline SVG / styled divs + CSS), since no pre-rendered video/3D asset
-exists for JobFlix and none can be generated as part of this work.
+Replace the `<video>` background with a self-contained **product mockup**
+built in code (JSX + Tailwind, no image/video asset) — a resume
+bullet-point "diff" card, the same pattern as the reference screenshot the
+user provided: a dark app-chrome card containing a white inner card that
+shows a resume experience entry with before/after bullet pairs (old bullet
+struck through on a red row, optimized bullet on a green row with a `+`
+marker), plus a footer bar with a change count and action buttons. This is a
+concrete product screenshot rather than an abstract icon scene — it directly
+demonstrates the ATS-optimization pillar (the strongest, most differentiated
+claim) instead of symbolizing it.
 
-**Structure**, keeping Clay's diorama framing (sky backdrop behind a cluster
-of floating foreground objects) because the section's existing layout
-(`rounded-b-[48px]`, padding that reserves space above the headline) is built
-around that composition:
+**Layout change**: this card is a focal object, not a full-bleed background,
+so the hero composition changes from "video behind centered text" to a
+two-zone layout: headline/subhead/CTAs on one side (left on desktop, stacked
+above on mobile), the mockup card on the other side (right on desktop,
+below the text on mobile), both sitting on a simplified green background
+(solid/gradient `clay-hero-green`, no sky/hills/clouds needed since the card
+is now the visual centerpiece). The card sits at a slight tilt with a soft
+shadow, like it's floating above the background.
 
-- **Backdrop**: sky gradient (light blue → the existing `clay-hero-green`)
-  with soft rolling-hill shapes and simple cloud blobs, static (no video
-  needed — CSS gradients + SVG shapes).
-- **Foreground objects** — 5 flat "sticker" icons (rounded shapes, soft
-  gradient fills, subtle drop-shadow — not photoreal 3D renders), each
-  mapped to one pillar:
-  1. Resume document passing behind a shield/checkmark → ATS-beating resumes
-  2. Radar arc sweeping over a small stack of job cards → real-time job
-     discovery
-  3. Chat bubble connected to two avatar dots → internal referrals
-  4. Staircase with a star at the top (reused almost as-is from Clay's
-     original staircase motif) → interactive learning / leveling up
-  5. Compass/guide badge → accountability mentorship
-- **Motion**: each object gets its own slow, independent CSS `@keyframes`
-  float/rotate loop (staggered durations/delays), replacing the video's
-  ambient motion. No JS animation library — pure CSS, so it's cheap and
-  loops indefinitely without a media file.
+**Card contents** (mirroring the screenshot's structure):
+- Small header row inside the dark chrome: eyebrow-style label, e.g.
+  `AI RESUME OPTIMIZATION`
+- Inner white card:
+  - Role/duration line, e.g. `Senior Frontend Engineer · 2022 – present`
+  - 2 bullet-diff pairs: a red strikethrough "before" row (`−`) directly
+    above a green "after" row (`+`) with a stronger, metric-backed rewrite —
+    reuse wording in the same spirit as the reference screenshot (vague duty
+    → quantified impact)
+  - Footer: left side shows a small `N changes` label, right side shows two
+    small buttons (`Edit` outline, `Approve & send` filled) purely as UI
+    chrome to sell realism — non-functional, decorative only
+- **Motion**: the bullet-diff rows reveal in sequence (staggered fade/slide-in
+  on mount, or a slow looping cycle) so the card feels alive rather than
+  static, replacing the video's ambient motion. Pure CSS (`@keyframes` +
+  animation-delay per row); no JS animation library.
 
 ## Implementation notes
 
 - Delete the `<video>` element and its `poster`/`source` in `Hero.tsx`; the
   underlying `hero.mp4` / `hero-poster.avif` files can stay on disk (unused)
   or be removed — implementer's call, not load-bearing either way.
-- Build the illustration as a new component, e.g.
-  `src/components/clay/HeroIllustration.tsx` (icons as inline SVG, matching
-  the existing `icons.tsx` pattern used elsewhere in `src/components/clay/`),
-  imported into `Hero.tsx` in place of the video block.
-- Preserve the existing responsive padding/positioning values in `Hero.tsx`
-  (`pt-[52vw] md:pt-[36vw] lg:pt-[420px]`, etc.) unless the new illustration's
-  natural proportions require adjusting them — if so, adjust deliberately and
-  keep mobile/tablet/desktop all checked.
-- No new dependencies; use existing Tailwind v4 setup and hand-written SVG,
-  consistent with `src/components/icons.tsx`.
+- Build the mockup as a new component, e.g.
+  `src/components/clay/HeroResumeCard.tsx`, imported into `Hero.tsx` in place
+  of the video block. `Hero.tsx`'s inner layout div changes from a single
+  centered column to a two-column flex/grid (text | card) on `md:`+, stacked
+  on mobile.
+- Rework the responsive padding/positioning values in `Hero.tsx`
+  (`pt-[52vw] md:pt-[36vw] lg:pt-[420px]`, etc.) since those existed to
+  reserve empty space above centered text for the full-bleed video — the new
+  two-zone layout doesn't need that reserved space in the same way. Check
+  mobile/tablet/desktop.
+- No new dependencies; existing Tailwind v4 setup, consistent with the rest
+  of `src/components/clay/`.
 
 ## Out of scope
 
