@@ -27,8 +27,8 @@ JobFlix's product pillars (from the user's feature copy):
 - **Eyebrow badge** (top-left, small caps link, matches existing style):
   `NEW: AI RESUME OPTIMIZATION`
 - **Headline**: `Everything it takes to get hired. Nothing else.`
-- **Subhead**: `ATS-beating resumes, first-mover job alerts, real referrals,
-  and mentors who won't let you fail.`
+- **Subhead**: `The system built to make sure you get hired — and make sure
+  you don't fail.`
 - **CTA buttons** (two, replacing Clay's single "Start free trial"):
   - Primary (solid, filled): `Optimize My Resume`
   - Secondary (outline/ghost, sits beside primary): `Find My Next Job`
