@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { cn } from "@/lib/utils";
 import {
   ArrowRightIcon,
@@ -14,6 +13,7 @@ import {
   YouTubeIcon,
   SlackIcon,
 } from "@/components/icons";
+import { Logo } from "./Logo";
 import type { NavItem } from "@/types/clay";
 
 const NAV_ITEMS: NavItem[] = [
@@ -347,15 +347,7 @@ export function Header() {
       <div className="mx-auto hidden max-w-[1600px] items-center justify-between px-6 py-4 xl:flex">
         <div className="flex items-center gap-10">
           <Link href="/" className="flex shrink-0 items-center">
-            <Image
-              src="/images/clay.com/logo/clay-logo.avif"
-              alt="Clay"
-              width={509}
-              height={163}
-              unoptimized
-              className="h-7 w-auto"
-              priority
-            />
+            <Logo />
           </Link>
 
           <nav className="flex items-center gap-7">
@@ -419,15 +411,7 @@ export function Header() {
       <div className="px-4 py-4 xl:hidden">
         <div className="flex items-center justify-between rounded-3xl bg-white px-4 py-3 shadow-[0_8px_30px_-12px_rgba(0,0,0,0.15)] ring-1 ring-black/5">
           <Link href="/" className="flex shrink-0 items-center">
-            <Image
-              src="/images/clay.com/logo/clay-logo.avif"
-              alt="Clay"
-              width={509}
-              height={163}
-              unoptimized
-              className="h-6 w-auto"
-              priority
-            />
+            <Logo compact />
           </Link>
 
           <div className="flex items-center gap-2">
@@ -459,14 +443,7 @@ export function Header() {
               className="flex shrink-0 items-center"
               onClick={() => setMobileMenuOpen(false)}
             >
-              <Image
-                src="/images/clay.com/logo/clay-logo.avif"
-                alt="Clay"
-                width={509}
-                height={163}
-                unoptimized
-                className="h-6 w-auto"
-              />
+              <Logo compact />
             </Link>
             <button
               type="button"

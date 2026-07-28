@@ -10,6 +10,13 @@ import {
   ChevronRight,
   CalendarPlus,
   Sparkle,
+  TrendingUp,
+  Radar,
+  FileCheck,
+  MessageCircle,
+  Blocks,
+  UserCheck,
+  CalendarCheck,
 } from "lucide-react";
 import type { SVGProps } from "react";
 
@@ -24,6 +31,13 @@ export const ChevronLeftIcon = ChevronLeft;
 export const ChevronRightIcon = ChevronRight;
 export const CalendarPlusIcon = CalendarPlus;
 export const FloatingWidgetIcon = Sparkle;
+export const TrendingUpIcon = TrendingUp;
+export const RadarIcon = Radar;
+export const FileCheckIcon = FileCheck;
+export const MessageCircleIcon = MessageCircle;
+export const BlocksIcon = Blocks;
+export const UserCheckIcon = UserCheck;
+export const CalendarCheckIcon = CalendarCheck;
 
 export function LinkedInIcon(props: SVGProps<SVGSVGElement>) {
   return (
