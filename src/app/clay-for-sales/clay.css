@@ -1,0 +1,35 @@
+/* Scoped styles for the Clay.com clone — isolated under .clay-scope so the
+   shared globals.css body/h1-h6 rules used by the rest of the template
+   never leak in, and vice versa. Mirrors src/app/clay-for-startups/clay.css
+   since both routes share Clay's sitewide design system. */
+
+.clay-scope {
+  font-family: var(--font-clay-sans), "Plus Jakarta Sans", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgb(85, 83, 78);
+  background-color: rgb(244, 243, 240);
+}
+
+.clay-scope h1,
+.clay-scope h2,
+.clay-scope h3,
+.clay-scope h4,
+.clay-scope h5,
+.clay-scope h6 {
+  color: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
+.clay-scope .font-clay-mono {
+  font-family: var(--font-clay-mono), "Space Mono", monospace;
+}
+
+.clay-scope .clay-arrow-btn:hover .clay-arrow-icon {
+  transform: translateX(4px);
+}
+
+.clay-scope .clay-arrow-icon {
+  transition: transform 150ms ease;
+}

@@ -63,3 +63,25 @@ export interface ResourceCard {
   image: string;
   variant: "banner" | "video" | "photo" | "story";
 }
+
+// --- Added for the clay-for-sales route (ported from clone_realestate) ---
+
+export interface ClayNavLink {
+  label: string;
+  href: string;
+}
+
+export interface ClayLogoItem {
+  name: string;
+  logoSrc?: string;
+  /** Rendered as a styled text wordmark when no logoSrc image is available. */
+  logoText?: string;
+  textClassName?: string;
+  caseStudyHref?: string;
+  badge?: string;
+}
+
+export interface ClayFooterColumn {
+  heading: string;
+  links: { label: string; href: string; badge?: string }[];
+}
